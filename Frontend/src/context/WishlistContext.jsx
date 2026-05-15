@@ -22,17 +22,23 @@ export function WishlistProvider({ children }) {
       // Remove if exists
 if (exists) {
 
-  toast.success(
-    `${product.name} removed from wishlist`
-  );
+toast.success(
+  "Added to wishlist",
+  {
+    id: "wishlist-toast",
+  }
+);
 
   return prev.filter(
     (item) => item.id !== product.id
   );
 }
       // Add new
-      toast.success(
-  `${product.name} added to wishlist ❤️`
+toast.success(
+  "Removed from wishlist",
+  {
+    id: "wishlist-toast",
+  }
 );
       return [...prev, product];
     });

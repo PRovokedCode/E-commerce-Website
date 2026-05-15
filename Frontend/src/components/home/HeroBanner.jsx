@@ -62,7 +62,7 @@ function HeroBanner() {
     <section className="max-w-7xl mx-auto px-4 py-6">
       {/* Main Slider */}
       <div
-        className={`relative rounded-3xl overflow-hidden bg-gradient-to-br ${slide.bg} min-h-[420px] flex items-center transition-all duration-500`}
+        className={`relative rounded-3xl overflow-hidden .bg-gradient-to-br ${slide.bg} min-h-105 flex items-center transition-all duration-500`}
       >
         {/* Decorative Circles */}
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/20 -translate-y-1/2 translate-x-1/3 pointer-events-none" />
@@ -110,7 +110,7 @@ function HeroBanner() {
             <img
               src={slide.image}
               alt="Hero"
-              className="max-h-72 md:max-h-[420px] object-contain drop-shadow-2xl"
+              className="max-h-72 md:max-h-105 object-contain drop-shadow-2xl"
               onError={(e) => {
                 e.target.style.display = "none";
               }}

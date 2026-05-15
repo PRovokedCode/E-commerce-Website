@@ -30,7 +30,7 @@ function NewsletterBanner() {
         </div>
 
         {/* Right: Form */}
-        <div className="relative z-10 w-full md:w-auto md:min-w-[420px]">
+        <div className="relative z-10 w-full md:w-auto md:min-w-105">
           <div className="flex items-center bg-white/10 backdrop-blur border border-white/10 rounded-2xl overflow-hidden focus-within:border-primary/50 transition-all">
             <div className="px-4 text-white/40">
               <Mail size={18} />

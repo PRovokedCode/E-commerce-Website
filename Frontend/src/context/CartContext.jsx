@@ -10,16 +10,29 @@ export function CartProvider({ children }) {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const [lastAddedTime, setLastAddedTime] = useState(0);
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
   // Add To Cart
   const addToCart = (product, quantity = 1) => {
+    const now = Date.now();
+
+    if (now - lastAddedTime < 300) {
+      toast.error("Please slow down a bit 😅", {
+        id: "cart-limit",
+      });
+
+      return;
+    }
+
+    setLastAddedTime(now);
     setCartItems((prev) => {
       const existingItem = prev.find((item) => item.id === product.id);
 
-      toast.success(`${product.name} added to cart 🛒`);
+      toast.success(`${product.name} added to cart`);
 
       // Already exists
       if (existingItem) {

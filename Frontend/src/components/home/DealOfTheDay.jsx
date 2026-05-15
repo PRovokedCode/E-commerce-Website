@@ -121,7 +121,7 @@ function DealOfTheDay() {
               <button
                 key={i}
                 onClick={() => setActiveImg(i)}
-                className={`w-14 h-14 rounded-xl overflow-hidden border-2 transition-all duration-200 flex-shrink-0 ${
+                className={`w-14 h-14 rounded-xl overflow-hidden border-2 transition-all duration-200 .flex-shrink-0 ${
                   activeImg === i
                     ? "border-primary shadow-md"
                     : "border-gray-100 hover:border-gray-300"
@@ -298,7 +298,12 @@ function DealOfTheDay() {
               </button>
 
               <button
-                onClick={() => toast.success("Added to compare list")}
+                onClick={() => toast.success(
+  `${p.name} added to compare list`,
+  {
+    id: "cart-toast",
+  }
+)}
                 className="flex-1 flex items-center justify-center gap-2 border border-gray-200 text-dark text-sm font-semibold py-2.5 rounded-xl hover:border-primary hover:text-primary transition-all
                 cursor-pointer"
               >
@@ -323,7 +328,7 @@ function DealOfTheDay() {
                   onClick={() => navigate(`/product/${p.id}`)}
                   className="flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors group cursor-pointer"
                 >
-                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden bg-gray-100 .flex-shrink-0">
                     <img
                       src={p.image}
                       alt={p.name}

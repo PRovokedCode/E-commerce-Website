@@ -33,7 +33,7 @@ function PromoBanners() {
         {banners.map((b, i) => (
           <div
             key={i}
-            className={`relative overflow-hidden rounded-3xl ${b.bg} min-h-[260px] group cursor-pointer`}
+            className={`relative overflow-hidden rounded-3xl ${b.bg} min-h-65 group cursor-pointer`}
           >
             {/* Background Image */}
             <img

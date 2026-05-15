@@ -123,7 +123,7 @@ function ProductCard({ product }) {
       {quickViewOpen && (
         <div
           onClick={() => setQuickViewOpen(false)}
-          className="fixed inset-0 z-[100] bg-black/50 overflow-y-auto p-4"
+          className="fixed inset-0 z-100 bg-black/50 overflow-y-auto p-4"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -143,7 +143,7 @@ function ProductCard({ product }) {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="max-h-[220px] md:max-h-[400px] object-contain"
+                  className="max-h-55 md:max-h-100 object-contain"
                 />
               </div>
 

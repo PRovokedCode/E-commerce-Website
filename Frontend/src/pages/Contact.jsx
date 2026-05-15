@@ -12,7 +12,12 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    toast.success("Message sent successfully!");
+    toast.success(
+  "Message sent successfully!",
+  {
+    id: "contact-toast",
+  }
+);
 
     e.target.reset();
   };
@@ -80,7 +85,7 @@ function Contact() {
 
                 return (
                   <div key={i} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
                       <Icon size={22} />
                     </div>
 
@@ -100,7 +105,7 @@ function Contact() {
           </div>
 
           {/* Right */}
-          <div className="rounded-3xl overflow-hidden border border-gray-100 h-[500px]">
+          <div className="rounded-3xl overflow-hidden border border-gray-100 h-125">
             <iframe
               title="map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.264391102564!2d75.7712834!3d26.895103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db59f0cafdb41%3A0x3cf3189829ef1f6b!2sNavRasa%20IT%20Solutions!5e0!3m2!1sen!2sin!4v1778842770971!5m2!1sen!2sin"
@@ -113,7 +118,7 @@ function Contact() {
 
       {/* Form */}
       <section className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="bg-gray-50 rounded-[2rem] p-6 md:p-12 border border-gray-100">
+        <div className="bg-gray-50 rounded-4xl p-6 md:p-12 border border-gray-100">
           <div className="max-w-3xl mb-10">
             <p className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-3">
               Send Message
