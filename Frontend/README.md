@@ -1,16 +1,74 @@
-# React + Vite
+# Evara Clone — React Ecommerce Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive ecommerce frontend inspired by the Evara template, built using React, Vite, Tailwind CSS, React Router, and Context API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# Tech Stack
 
-## React Compiler
+- React
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Context API
+- React Hot Toast
+- Lucide React
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+# Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Clone Repository
+
+```bash
+git clone YOUR_REPOSITORY_LINK
+```
+
+## Go To Project Folder
+
+```bash
+cd PROJECT_NAME
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Start Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+# Required Packages
+
+```bash
+npm install react-router-dom react-hot-toast lucide-react react-icons
+```
+
+---
+
+# Project Structure
+
+```txt
+src/
+├── assets
+├── components
+│   ├── home
+│   ├── layout
+│   ├── products
+│   └── shared
+├── context
+├── data
+├── pages
+├── main.jsx
+└── index.css
+```
+
+# Inspired By
+
+https://wp.alithemes.com/html/evara/evara-frontend/index.html
