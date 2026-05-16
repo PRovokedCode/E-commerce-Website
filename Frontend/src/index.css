@@ -1,9 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
 @import "tailwindcss";
 
-
 @theme {
-  --color-primary: #3BB77E;
-  --color-secondary: #FCB800;
-  --color-dark: #253D4E;
+  --color-primary: #3bb77e;
+  --color-secondary: #fcb800;
+  --color-dark: #253d4e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Default Autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #253d4e !important;
+
+  caret-color: #253d4e;
+
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Footer / Dark Inputs */
+.footer-input:-webkit-autofill,
+.footer-input:-webkit-autofill:hover,
+.footer-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+
+  caret-color: white;
+
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+
+  transition: background-color 9999s ease-in-out 0s;
 }

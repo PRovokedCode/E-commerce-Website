@@ -35,16 +35,21 @@ function NewsletterBanner() {
             <div className="px-4 text-white/40">
               <Mail size={18} />
             </div>
-            <input
-              type="email"
-              placeholder="Your email address..."
-              className="flex-1 bg-transparent py-4 pr-2 text-white placeholder-white/30 text-sm outline-none"
-            />
-            <button className="bg-primary text-white font-black text-sm px-6 py-4 hover:bg-primary/90 active:scale-95 transition-all m-1 rounded-xl">
+<input
+  type="email"
+  placeholder="Your email address..."
+  className=" footer-input flex-1 bg-transparent py-4 pr-2 text-white placeholder-white/30 text-sm outline-none"
+  style={{
+    WebkitTextFillColor: "white",
+  }}
+/>
+            
+            <button className="bg-primary text-white font-black text-sm px-6 py-4 hover:bg-primary/90 active:scale-95 transition-all m-1 rounded-xl
+            cursor-pointer">
               Subscribe
             </button>
           </div>
-          <p className="text-white/30 text-xs mt-2 text-center">
+          <p className="text-white/50 text-xs mt-2 text-center">
             We respect your privacy. Unsubscribe anytime.
           </p>
         </div>

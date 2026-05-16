@@ -14,12 +14,14 @@ import "./index.css";
 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
-
+import Login from "./pages/Login";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
+  
   <CartProvider>
     <WishlistProvider>
+      <div id="top">
       <BrowserRouter>
         <ScrollToTop />
         <Toaster
@@ -61,9 +63,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/wishlist" element={<Wishlist />} />
 
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
+      </div>
     </WishlistProvider>
   </CartProvider>,
+  
   // </React.StrictMode>,
 );

@@ -12,7 +12,7 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-16 z-40 bg-primary text-white shadow-md">
+    <nav className="sticky top-0 z-40 bg-primary text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4">
         {/* Main Navbar */}
         <div className="grid grid-cols-3 items-center h-14">

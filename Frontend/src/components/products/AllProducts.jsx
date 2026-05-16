@@ -7,16 +7,15 @@ import ProductCard from "../shared/ProductCard";
 const categories = ["All", ...new Set(products.map((p) => p.category))];
 
 function AllProducts() {
-
   const productsRef = useRef(null);
 
   const [sortBy, setSortBy] = useState("default");
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams] = useSearchParams();
+
+  const currentPage = Number(searchParams.get("page")) || 1;
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
-  const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
 
@@ -25,21 +24,23 @@ function AllProducts() {
   const searchQuery = searchParams.get("search") || "";
 
   useEffect(() => {
-    setCurrentPage(1);
+      const params =
+    new URLSearchParams(searchParams);
+
+  params.set("page", 1);
+
+  navigate(`/shop?${params.toString()}`);
   }, [selectedCategory, searchQuery, sortBy]);
 
   useEffect(() => {
-
-  productsRef.current?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-
-}, [currentPage]);
+    productsRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [currentPage]);
 
   const filteredProducts = useMemo(() => {
     let filtered = [...products];
-
 
     /* Category Filter */
     if (selectedCategory !== "All") {
@@ -71,31 +72,20 @@ function AllProducts() {
 
   const productsPerPage = 8;
 
-const totalPages = Math.ceil(
-  filteredProducts.length /
-    productsPerPage
-);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
-const startIndex =
-  (currentPage - 1) *
-  productsPerPage;
+  const startIndex = (currentPage - 1) * productsPerPage;
 
-const paginatedProducts =
-  filteredProducts.slice(
+  const paginatedProducts = filteredProducts.slice(
     startIndex,
-    startIndex +
-      productsPerPage
+    startIndex + productsPerPage,
   );
 
   return (
-    <section
-  ref={productsRef}
-  className="max-w-7xl mx-auto px-4 py-10"
->
+    <section ref={productsRef} className="max-w-7xl mx-auto px-4 py-10">
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
         <div>
-
           <h2 className="text-3xl font-black text-dark">All Products</h2>
         </div>
 
@@ -211,11 +201,17 @@ const paginatedProducts =
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-3 mt-12 flex-wrap">
+            <div className="flex items-center justify-center gap-2 mt-12 flex-wrap">
               {/* Prev */}
               <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                className="px-4 py-2 rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all"
+                onClick={() => {
+                  const params = new URLSearchParams(searchParams);
+
+                  params.set("page", Math.max(currentPage - 1, 1));
+
+                  navigate(`/shop?${params.toString()}`);
+                }}
+                className="px-4 py-2 rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all cursor-pointer"
               >
                 Prev
               </button>
@@ -224,8 +220,14 @@ const paginatedProducts =
               {[...Array(totalPages)].map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentPage(index + 1)}
-                  className={`w-11 h-11 rounded-xl font-bold transition-all ${
+                  onClick={() => {
+                    const params = new URLSearchParams(searchParams);
+
+                    params.set("page", index + 1);
+
+                    navigate(`/shop?${params.toString()}`);
+                  }}
+                  className={`w-11 h-11 rounded-xl font-bold cursor-pointer transition-all ${
                     currentPage === index + 1
                       ? "bg-primary text-white"
                       : "bg-white border border-gray-200 hover:border-primary hover:text-primary"
@@ -237,10 +239,14 @@ const paginatedProducts =
 
               {/* Next */}
               <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-                className="px-4 py-2 rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all"
+                onClick={() => {
+                  const params = new URLSearchParams(searchParams);
+
+                  params.set("page", Math.min(currentPage + 1, totalPages));
+
+                  navigate(`/shop?${params.toString()}`);
+                }}
+                className="px-4 py-2 rounded-xl border border-gray-200 bg-white hover:border-primary hover:text-primary transition-all cursor-pointer"
               >
                 Next
               </button>

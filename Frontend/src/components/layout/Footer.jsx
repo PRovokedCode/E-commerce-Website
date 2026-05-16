@@ -121,20 +121,24 @@ const socialLinks = [
     label: "Facebook",
     color: "hover:bg-blue-600",
   },
-  { Icon: FaTwitter, 
-    href: "https://x.com/", 
-    label: "Twitter", 
-    color: "hover:bg-sky-500" },
+  {
+    Icon: FaTwitter,
+    href: "https://x.com/",
+    label: "Twitter",
+    color: "hover:bg-sky-500",
+  },
   {
     Icon: FaInstagram,
     href: "https://www.instagram.com/",
     label: "Instagram",
     color: "hover:bg-pink-600",
   },
-  { Icon: FaYoutube, 
-    href: "https://www.youtube.com/", 
-    label: "YouTube", 
-    color: "hover:bg-red-600" },
+  {
+    Icon: FaYoutube,
+    href: "https://www.youtube.com/",
+    label: "YouTube",
+    color: "hover:bg-red-600",
+  },
 ];
 
 function Footer() {
@@ -228,12 +232,12 @@ function Footer() {
               {
                 label: "App Store",
                 icon: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-                link:"https://apps.apple.com/us/app/amazon-shopping/id297606951",
+                link: "https://apps.apple.com/us/app/amazon-shopping/id297606951",
               },
               {
                 label: "Google Play",
                 icon: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg",
-                link:"https://play.google.com/store/apps/details?id=in.amazon.mShop.android.shopping&hl=en_IN"
+                link: "https://play.google.com/store/apps/details?id=in.amazon.mShop.android.shopping&hl=en_IN",
               },
             ].map((store) => (
               <a
@@ -262,13 +266,15 @@ function Footer() {
           <p className="text-[11px] text-white/40 mb-2 uppercase tracking-wide">
             Quick Subscribe
           </p>
+
           <div className="flex items-center bg-white/10 rounded-xl overflow-hidden border border-white/10 focus-within:border-primary/50 transition-all">
             <input
               type="email"
               placeholder="Your email"
-              className="flex-1 bg-transparent px-3 py-2.5 text-xs text-white placeholder-white/30 outline-none"
+              className=" footer-input flex-1 bg-transparent px-3 py-2.5 text-xs text-white placeholder-white/30 outline-none"
             />
-            <button className="bg-primary p-2.5 text-white hover:bg-primary/90 transition-colors m-1 rounded-lg">
+
+            <button className="bg-primary p-2.5 text-white hover:bg-primary/90 transition-colors m-1 rounded-lg cursor-pointer">
               <Send size={13} />
             </button>
           </div>

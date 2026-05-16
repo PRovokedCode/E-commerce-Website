@@ -12,12 +12,9 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    toast.success(
-  "Message sent successfully!",
-  {
-    id: "contact-toast",
-  }
-);
+    toast.success("Message sent successfully!", {
+      id: "contact-toast",
+    });
 
     e.target.reset();
   };

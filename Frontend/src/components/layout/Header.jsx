@@ -1,30 +1,55 @@
 import { Search, Heart, ShoppingCart, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import { useWishlist } from "../../context/WishlistContext";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 const BASE = "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs";
 
 function Header() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setSearch(searchParams.get("search") || "");
+  }, [searchParams]);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-4">
+    <header
+      className={`bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300 ${
+        scrolled ? "py-2" : "py-4"
+      }`}
+    >
+      <div
+        className={`max-w-7xl mx-auto px-4 flex items-center gap-4 transition-all duration-300 ${
+          scrolled ? "py-2" : "py-3"
+        }`}
+      >
         {/* Logo */}
-        <a href="/" className="shrink-0">
+        <Link to="/" className="shrink-0">
           <img
             src={`${BASE}/theme/logo.svg`}
             alt="Evara Logo"
-            className="h-10 w-auto"
+            className={`w-auto transition-all duration-300 ${
+              scrolled ? "h-7" : "h-10"
+            }`}
           />
-        </a>
+        </Link>
 
         {/* Search */}
         <form
@@ -35,11 +60,12 @@ function Header() {
           }}
           className="flex flex-1 items-center border-2 border-primary rounded-lg overflow-hidden"
         >
-          
           <div className="relative flex-1">
             <input
               type="text"
-              placeholder="Search for items..."
+              placeholder={
+                window.innerWidth < 640 ? "Search..." : "Search for items..."
+              }
               className="w-full px-4 py-2 text-sm outline-none pr-10"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -51,9 +77,10 @@ function Header() {
                 type="button"
                 onClick={() => {
                   setSearch("");
-                  navigate();
+                  navigate("/shop");
                 }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-dark transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-dark transition-colors
+                cursor-pointer"
               >
                 <X size={16} />
               </button>
@@ -63,7 +90,8 @@ function Header() {
             onClick={() => {
               navigate(`/shop?search=${search}`);
             }}
-            className="bg-primary px-4 py-2.5 text-white hover:bg-primary/90 transition-colors"
+            className="bg-primary px-4 py-2.5 text-white hover:bg-primary/90 transition-colors
+            cursor-pointer"
           >
             <Search size={18} />
           </button>
