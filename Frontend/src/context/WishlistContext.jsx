@@ -23,7 +23,7 @@ export function WishlistProvider({ children }) {
 if (exists) {
 
 toast.success(
-  "Added to wishlist",
+  "Removed from wishlist",
   {
     id: "wishlist-toast",
   }
@@ -35,7 +35,7 @@ toast.success(
 }
       // Add new
 toast.success(
-  "Removed from wishlist",
+  "Added to wishlist",
   {
     id: "wishlist-toast",
   }

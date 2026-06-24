@@ -1,5 +1,3 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-
 import toast from "react-hot-toast";
 
 import TopBar from "../components/layout/TopBar";
@@ -7,8 +5,13 @@ import Header from "../components/layout/Header";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import NewsletterBanner from "../components/home/NewsletterBanner";
+import Breadcrumb from "../components/shared/Breadcrumb";
+import { contactPageData } from "../data/pageData";
 
 function Contact() {
+  const { breadcrumb, hero, contactMethods, mapEmbedUrl, form, stores } =
+    contactPageData;
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,15 +27,7 @@ function Contact() {
       <TopBar />
       <Header />
       <Navbar />
-
-      {/* Breadcrumb */}
-      <section className="border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 py-5">
-          <p className="text-sm text-gray-500">
-            Home /<span className="text-primary font-semibold"> Contact</span>
-          </p>
-        </div>
-      </section>
+      <Breadcrumb items={breadcrumb} />
 
       {/* Intro */}
       <section className="max-w-7xl mx-auto px-4 py-16">
@@ -40,44 +35,19 @@ function Contact() {
           {/* Left */}
           <div>
             <p className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-4">
-              Contact Us
+              {hero.tag}
             </p>
 
             <h1 className="text-4xl md:text-5xl font-black text-dark leading-tight mb-6">
-              Get In Touch
+              {hero.title}
             </h1>
 
             <p className="text-gray-500 leading-relaxed text-lg mb-8">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              mollitia, molestiae quas vel sint commodi repudiandae.
+              {hero.description}
             </p>
 
             <div className="space-y-5">
-              {[
-                {
-                  icon: MapPin,
-                  title: "Address",
-                  info: "5171 W Campbell Ave undefined Kent, Utah 53127 United States",
-                },
-
-                {
-                  icon: Phone,
-                  title: "Phone",
-                  info: "+1 800 555 555",
-                },
-
-                {
-                  icon: Mail,
-                  title: "Email",
-                  info: "contact@evara.com",
-                },
-
-                {
-                  icon: Clock,
-                  title: "Hours",
-                  info: "10:00 - 18:00, Mon - Sat",
-                },
-              ].map((item, i) => {
+              {contactMethods.map((item, i) => {
                 const Icon = item.icon;
 
                 return (
@@ -105,7 +75,7 @@ function Contact() {
           <div className="rounded-3xl overflow-hidden border border-gray-100 h-125">
             <iframe
               title="map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.264391102564!2d75.7712834!3d26.895103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db59f0cafdb41%3A0x3cf3189829ef1f6b!2sNavRasa%20IT%20Solutions!5e0!3m2!1sen!2sin!4v1778842770971!5m2!1sen!2sin"
+              src={mapEmbedUrl}
               className="w-full h-full border-0"
               loading="lazy"
             />
@@ -118,16 +88,15 @@ function Contact() {
         <div className="bg-gray-50 rounded-4xl p-6 md:p-12 border border-gray-100">
           <div className="max-w-3xl mb-10">
             <p className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-3">
-              Send Message
+              {form.tag}
             </p>
 
             <h2 className="text-3xl md:text-4xl font-black text-dark mb-4">
-              Drop Us a Line
+              {form.title}
             </h2>
 
             <p className="text-gray-500 leading-relaxed">
-              Your email address will not be published. Required fields are
-              marked *
+              {form.description}
             </p>
           </div>
 
@@ -165,7 +134,7 @@ function Contact() {
               type="submit"
               className="bg-primary hover:bg-primary/90 text-white font-bold px-10 py-4 rounded-2xl transition-all active:scale-[0.98]"
             >
-              Send Message
+              {form.submitText}
             </button>
           </form>
         </div>
@@ -175,28 +144,26 @@ function Contact() {
       <section className="max-w-7xl mx-auto px-4 pb-20">
         <div className="text-center mb-12">
           <p className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-3">
-            Stores
+            {stores.title}
           </p>
 
-          <h2 className="text-4xl font-black text-dark">Our Offices</h2>
+          <h2 className="text-4xl font-black text-dark">{stores.heading}</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {["New York", "London", "Tokyo"].map((city, i) => (
+          {stores.cities.map((city, i) => (
             <div
               key={i}
               className="border border-gray-100 rounded-3xl p-8 hover:shadow-lg transition-all"
             >
-              <h3 className="text-2xl font-black text-dark mb-4">{city}</h3>
+              <h3 className="text-2xl font-black text-dark mb-4">{city.name}</h3>
 
               <div className="space-y-3 text-gray-500 text-sm">
-                <p>
-                  5171 W Campbell Ave undefined Kent, Utah 53127 United States
-                </p>
+                <p>{city.address}</p>
 
-                <p>+1 800 555 555</p>
+                <p>{city.phone}</p>
 
-                <p>contact@evara.com</p>
+                <p>{city.email}</p>
               </div>
 
               <button className="mt-6 text-primary font-bold hover:translate-x-1 transition-transform">

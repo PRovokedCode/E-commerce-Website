@@ -13,6 +13,30 @@ export const products = [
     badge: "Sale",
     tags: ["featured"],
     image: `${BASE}/thumbnail-3.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
+    specifications: {
+      Material: "Premium Cotton",
+      Weight: "0.5kg",
+      Brand: "Evara",
+      Warranty: "1 Year",
+    },
   },
 
   {
@@ -26,6 +50,30 @@ export const products = [
     badge: "New",
     tags: ["featured"],
     image: `${BASE}/thumbnail-2.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
+    specifications: {
+      Material: "100% Corduroy Cotton",
+      Weight: "0.4kg",
+      Brand: "Evara",
+      Warranty: "1 Year",
+    },
   },
 
   {
@@ -39,6 +87,30 @@ export const products = [
     badge: "Hot",
     tags: ["featured", "popular"],
     image: `${BASE}/product-16-1.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
+    specifications: {
+      Material: "100% Organic Cotton",
+      Weight: "0.35kg",
+      Brand: "Evara",
+      Warranty: "1 Year",
+    },
   },
 
   {
@@ -52,6 +124,30 @@ export const products = [
     badge: "Sale",
     tags: ["popular"],
     image: `${BASE}/product-16-2.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
+    specifications: {
+      Material: "Aluminum & Silicone",
+      Weight: "0.25kg",
+      Brand: "Evara",
+      Warranty: "2 Years",
+    },
   },
 
   {
@@ -65,6 +161,24 @@ export const products = [
     badge: null,
     tags: ["featured"],
     image: `${BASE}/product-16-3.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
   },
 
   {
@@ -78,6 +192,24 @@ export const products = [
     badge: "Sale",
     tags: ["featured", "popular"],
     image: `${BASE}/product-16-4.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
   },
 
   {
@@ -91,6 +223,24 @@ export const products = [
     badge: "New",
     tags: ["new"],
     image: `${BASE}/thumbnail-4.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
   },
 
   {
@@ -104,6 +254,30 @@ export const products = [
     badge: "Hot",
     tags: ["popular"],
     image: `${BASE}/thumbnail-5.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
+    specifications: {
+      Material: "Premium Cotton",
+      Weight: "0.5kg",
+      Brand: "Evara",
+      Warranty: "1 Year",
+    },
   },
 
     {
@@ -117,5 +291,28 @@ export const products = [
     badge: "Hot",
     tags: ["popular"],
     image: `${BASE}/thumbnail-9.jpg`,
+
+      images: [
+    `${BASE}/thumbnail-3.jpg`,
+    `${BASE}/thumbnail-4.jpg`,
+    `${BASE}/thumbnail-5.jpg`,
+    `${BASE}/thumbnail-6.jpg`,
+    `${BASE}/thumbnail-7.jpg`,
+  ],
+colors: [
+  "#F87171",
+  "#60A5FA",
+  "#34D399",
+  "#FBBF24",
+  "#A78BFA",
+],
+
+sizes: ["XS", "S", "M", "L", "XL"],
+    specifications: {
+      Material: "Mesh & Rubber",
+      Weight: "0.4kg",
+      Brand: "Evara",
+      Warranty: "1 Year",
+    },
   },
 ];

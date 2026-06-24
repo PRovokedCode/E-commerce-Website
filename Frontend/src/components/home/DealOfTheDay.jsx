@@ -10,71 +10,9 @@ import { useCart } from "../../context/CartContext";
 
 import toast from "react-hot-toast";
 
-const BASE =
-  "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs/shop";
-
-const dealProduct = {
-  id: 999,
-
-  name: "Summer Collection New Modern Design",
-
-  brand: "Evara Fashion",
-
-  rating: 4,
-
-  reviews: 65,
-
-  price: 139.0,
-
-  oldPrice: 160.99,
-
-  discount: "14% OFF",
-
-  description:
-    "Premium quality summer collection featuring modern designs and comfortable materials. Perfect for any occasion, from casual outings to formal events.",
-
-  colors: ["#f87171", "#60a5fa", "#34d399", "#fbbf24", "#a78bfa", "#f472b6"],
-
-  sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-
-  stock: 12,
-
-  images: [
-    `${BASE}/product-16-2.jpg`,
-    `${BASE}/product-16-1.jpg`,
-    `${BASE}/product-16-3.jpg`,
-    `${BASE}/product-16-4.jpg`,
-    `${BASE}/product-16-5.jpg`,
-  ],
-};
+import { dealProduct, sideProducts } from "../../data/homepageData";
 
 const dealEnd = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString();
-
-const sideProducts = [
-  {
-    id: 1,
-    name: "Daisy Casual Bag",
-    price: 28,
-    image: `${BASE}/thumbnail-3.jpg`,
-    rating: 4,
-  },
-
-  {
-    id: 2,
-    name: "Corduroy Shirts",
-    price: 32,
-    image: `${BASE}/thumbnail-2.jpg`,
-    rating: 5,
-  },
-
-  {
-    id: 7,
-    name: "Floral Blouse",
-    price: 22,
-    image: `${BASE}/thumbnail-4.jpg`,
-    rating: 4,
-  },
-];
 
 function DealOfTheDay() {
   const [activeImg, setActiveImg] = useState(0);
@@ -298,12 +236,11 @@ function DealOfTheDay() {
               </button>
 
               <button
-                onClick={() => toast.success(
-  `${p.name} added to compare list`,
-  {
-    id: "cart-toast",
-  }
-)}
+                onClick={() =>
+                  toast.success(`${p.name} added to compare list`, {
+                    id: "cart-toast",
+                  })
+                }
                 className="flex-1 flex items-center justify-center gap-2 border border-gray-200 text-dark text-sm font-semibold py-2.5 rounded-xl hover:border-primary hover:text-primary transition-all
                 cursor-pointer"
               >

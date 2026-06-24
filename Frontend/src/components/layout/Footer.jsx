@@ -5,14 +5,20 @@ import {
   FaTwitter,
   FaInstagram,
   FaYoutube,
-  FaAppStore,
-  FaGooglePlay,
   FaMapPin,
 } from "react-icons/fa";
 
-import { Phone, Mail, MapPin, Clock, Send, Apple, Play } from "lucide-react";
-
-const BASE = "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs";
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import {
+  logo2,
+  paymentVisa,
+  paymentMastercard1,
+  paymentMastercard2,
+  appStoreIcon,
+  googlePlayIcon,
+  appStoreLink,
+  googlePlayLink,
+} from "../../data/assets";
 
 const footerLinks = {
   company: {
@@ -173,11 +179,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
         <div className="col-span-2 md:col-span-4 lg:col-span-1">
           <a href="/" className="shrink-0">
-            <img
-              src={`${BASE}/theme/logo-2.svg`}
-              alt="Evara Logo"
-              className="h-10 w-auto mb-4"
-            />
+            <img src={logo2} alt="Evara Logo" className="h-10 w-auto mb-4" />
           </a>
           <p className="text-white/40 text-sm leading-relaxed mb-5">
             Your one-stop destination for fashion, electronics, and lifestyle
@@ -231,13 +233,13 @@ function Footer() {
             {[
               {
                 label: "App Store",
-                icon: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-                link: "https://apps.apple.com/us/app/amazon-shopping/id297606951",
+                icon: appStoreIcon,
+                link: appStoreLink,
               },
               {
                 label: "Google Play",
-                icon: "https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg",
-                link: "https://play.google.com/store/apps/details?id=in.amazon.mShop.android.shopping&hl=en_IN",
+                icon: googlePlayIcon,
+                link: googlePlayLink,
               },
             ].map((store) => (
               <a
@@ -288,21 +290,9 @@ function Footer() {
           </p>
           <div className="flex items-center gap-3">
             <span className="text-white/30 text-xs">We accept:</span>
-            <img
-              src="https://www.freepnglogos.com/uploads/visa-card-logo-9.png"
-              alt=""
-              className="w-10 h-auto"
-            />
-            <img
-              src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-icon-credit-cards-icon-set-softiconsm-21.png"
-              alt=""
-              className="w-10 h-auto"
-            />
-            <img
-              src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-png-images-for-download-crazypngm-24.png"
-              alt=""
-              className="w-10 h-auto"
-            />
+            <img src={paymentVisa} alt="" className="w-10 h-auto" />
+            <img src={paymentMastercard1} alt="" className="w-10 h-auto" />
+            <img src={paymentMastercard2} alt="" className="w-10 h-auto" />
           </div>
         </div>
       </div>

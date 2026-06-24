@@ -1,37 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const BASE = "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs";
-
-const slides = [
-  {
-    tag: "Women's Fashion",
-    title: "Don't miss amazing",
-    highlight: "grocery deals",
-    subtitle: "Sign up for the daily newsletter and get exclusive deals.",
-    cta: "Shop Now",
-    image: `${BASE}/slider/slider-1.png`,
-    bg: "from-emerald-50 via-teal-50 to-cyan-50",
-  },
-  {
-    tag: "Fashion Sale",
-    title: "Latest gadgets at",
-    highlight: "unbeatable prices",
-    subtitle: "Explore our curated collection of top-rated Fashion Products.",
-    cta: "Shop Now",
-    image: `${BASE}/slider/slider-2.png`,
-    bg: "from-blue-50 via-indigo-50 to-violet-50",
-  },
-  {
-    tag: "New Arrivals",
-    title: "Fresh styles for",
-    highlight: "every season",
-    subtitle: "Discover the newest trends in fashion and lifestyle.",
-    cta: "Explore Now",
-    image: `${BASE}/slider/slider-3.png`,
-    bg: "from-rose-50 via-pink-50 to-fuchsia-50",
-  },
-];
+import { heroSlides } from "../../data/homepageData";
 
 function HeroBanner() {
   const [current, setCurrent] = useState(0);
@@ -44,7 +13,7 @@ function HeroBanner() {
     setAnimating(true);
 
     setTimeout(() => {
-      setCurrent((c) => (c + dir + slides.length) % slides.length);
+      setCurrent((c) => (c + dir + heroSlides.length) % heroSlides.length);
 
       setAnimating(false);
     }, 300);
@@ -56,7 +25,7 @@ function HeroBanner() {
     return () => clearInterval(t);
   }, []);
 
-  const slide = slides[current];
+  const slide = heroSlides[current];
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-6">
@@ -135,7 +104,7 @@ function HeroBanner() {
 
         {/* Dots */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-          {slides.map((_, i) => (
+          {heroSlides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}

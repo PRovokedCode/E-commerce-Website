@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import MegaMenu from "./MegaMenu";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Shop", path: "/shop" },
   { name: "Contact", path: "/contact" },
+  {name: "About", path: "/about"},
 ];
 
 function Navbar() {
@@ -25,6 +27,9 @@ function Navbar() {
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
+
+            {/* Desktop Mega Menu */}
+            <MegaMenu />
           </div>
 
           {/* Center Navigation */}

@@ -1,28 +1,5 @@
 import { Link } from "react-router-dom";
-
-const BASE =
-  "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs";
-
-const banners = [
-  {
-    tag: "Smart Offer",
-    title: "Save 20% on",
-    highlight: "Woman Bag",
-    cta: "Shop Now",
-    image: `${BASE}/banner/banner-1.png`,
-    bg: "bg-[#f4ecf0]",
-    link:"/shop?search=bag",
-  },
-  {
-    tag: "Sale Off",
-    title: "Great Summer",
-    highlight: "Collection",
-    cta: "Discover Now",
-    image: `${BASE}/banner/banner-2.png`,
-    bg: "bg-[#eef6fa]",
-    link: "/shop",
-  },
-];
+import { promoBanners } from "../../data/homepageData";
 
 function PromoBanners() {
   return (
@@ -30,7 +7,7 @@ function PromoBanners() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        {banners.map((b, i) => (
+        {promoBanners.map((b, i) => (
           <div
             key={i}
             className={`relative overflow-hidden rounded-3xl ${b.bg} min-h-65 group cursor-pointer`}

@@ -5,21 +5,28 @@ import TopBar from "../components/layout/TopBar";
 import Header from "../components/layout/Header";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
+import Breadcrumb from "../components/shared/Breadcrumb";
+import { loginPageData } from "../data/pageData";
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true);
-
   const [showPassword, setShowPassword] = useState(false);
+
+  const breadcrumbItems = [
+    ...loginPageData.breadcrumbBase,
+    { label: isLogin ? "Sign In" : "Sign Up" },
+  ];
 
   return (
     <div className="bg-white min-h-screen flex flex-col">
       <TopBar />
       <Header />
       <Navbar />
+      <Breadcrumb items={breadcrumbItems} />
 
       {/* Main */}
       <section className="flex-1 flex items-center justify-center px-4 py-14">
-        <div className="w-full max-w-6xl grid lg:grid-cols-2 overflow-hidden rounded-[32px] border border-gray-100 shadow-[0_20px_80px_rgba(0,0,0,0.06)]">
+        <div className="w-full max-w-6xl grid lg:grid-cols-2 overflow-hidden rounded-4xl border border-gray-100 shadow-[0_20px_80px_rgba(0,0,0,0.06)]">
           {/* Left Side */}
           <div className="hidden lg:flex relative bg-primary p-12 overflow-hidden">
             {/* Background Shapes */}
@@ -32,26 +39,20 @@ function Login() {
               </span>
 
               <h1 className="text-5xl font-black leading-tight mb-5">
-                Fashion <br />
-                Meets Modern <br />
-                Shopping
+                {loginPageData.heroPanel.headline}
               </h1>
 
               <p className="text-white/80 text-lg leading-relaxed max-w-md">
-                Discover trending styles, premium quality products, and seamless
-                shopping experiences built for modern customers.
+                {loginPageData.heroPanel.description}
               </p>
 
               <div className="flex gap-4 mt-10">
-                <div className="bg-white/10 backdrop-blur-md px-5 py-4 rounded-2xl">
-                  <h3 className="text-2xl font-black">10K+</h3>
-                  <p className="text-sm text-white/70">Happy Customers</p>
-                </div>
-
-                <div className="bg-white/10 backdrop-blur-md px-5 py-4 rounded-2xl">
-                  <h3 className="text-2xl font-black">500+</h3>
-                  <p className="text-sm text-white/70">Premium Products</p>
-                </div>
+                {loginPageData.heroPanel.stats.map((stat, i) => (
+                  <div key={i} className="bg-white/10 backdrop-blur-md px-5 py-4 rounded-2xl">
+                    <h3 className="text-2xl font-black">{stat.value}</h3>
+                    <p className="text-sm text-white/70">{stat.label}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -61,17 +62,15 @@ function Login() {
             {/* Top */}
             <div className="mb-10">
               <span className="text-primary font-bold text-sm uppercase tracking-[3px]">
-                {isLogin ? "Welcome Back" : "Create Account"}
+                {isLogin ? loginPageData.signIn.tag : loginPageData.signUp.tag}
               </span>
 
               <h2 className="text-4xl font-black text-dark mt-3">
-                {isLogin ? "Sign In" : "Sign Up"}
+                {isLogin ? loginPageData.signIn.title : loginPageData.signUp.title}
               </h2>
 
               <p className="text-gray-500 mt-3">
-                {isLogin
-                  ? "Login to continue shopping with Evara."
-                  : "Create your account and start shopping today."}
+                {isLogin ? loginPageData.signIn.description : loginPageData.signUp.description}
               </p>
             </div>
 
@@ -160,7 +159,7 @@ function Login() {
                 type="submit"
                 className="w-full bg-primary text-white font-bold h-14 rounded-2xl hover:bg-primary/90 transition-all active:scale-[0.98] shadow-lg shadow-primary/20 cursor-pointer"
               >
-                {isLogin ? "Login" : "Create Account"}
+                {isLogin ? loginPageData.signIn.submitText : loginPageData.signUp.submitText}
               </button>
             </form>
 
@@ -175,17 +174,19 @@ function Login() {
 
             {/* Social */}
             <div className="grid grid-cols-2 gap-4">
-              <button className="h-13 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-md active:scale-95 active:shadow-sm transition-all duration-150 font-semibold text-sm cursor-pointer">
-                Google
-              </button>
-              <button className="h-13 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-md active:scale-95 active:shadow-sm transition-all duration-150 font-semibold text-sm cursor-pointer">
-                Facebook
-              </button>
+              {loginPageData.socialButtons.map((button, i) => (
+                <button
+                  key={i}
+                  className="h-13 rounded-2xl border border-gray-200 hover:border-primary hover:shadow-md active:scale-95 active:shadow-sm transition-all duration-150 font-semibold text-sm cursor-pointer"
+                >
+                  {button.label}
+                </button>
+              ))}
             </div>
 
             {/* Toggle */}
             <p className="text-center text-sm text-gray-500 mt-10">
-              {isLogin ? "Don't have an account?" : "Already have an account?"}
+              {isLogin ? loginPageData.signIn.altText : loginPageData.signUp.altText}
 
               <button
                 onClick={() => {
@@ -198,7 +199,7 @@ function Login() {
                 }}
                 className="text-primary font-bold ml-2 hover:underline cursor-pointer"
               >
-                {isLogin ? "Sign Up" : "Login"}
+                {isLogin ? loginPageData.signIn.toggleText : loginPageData.signUp.toggleText}
               </button>
             </p>
           </div>

@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ChevronUp } from "lucide-react";
 
 function ScrollToTop() {
+  const { pathname } = useLocation();
   const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,8 +21,27 @@ function ScrollToTop() {
   }, []);
 
   return (
-    <a
-      href="#top"
+    <button
+      onClick={() => {
+        const startPosition = window.pageYOffset;
+        const duration = 800;
+        let startTime = null;
+
+        const animateScroll = (currentTime) => {
+          if (!startTime) startTime = currentTime;
+
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          window.scrollTo(0, startPosition * (1 - progress));
+
+          if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+          }
+        };
+
+        requestAnimationFrame(animateScroll);
+      }}
       className={`fixed bottom-6 right-6 z-50 bg-primary text-white p-3 rounded-full shadow-xl hover:scale-110 hover:bg-primary/90 transition-all duration-300 cursor-pointer ${
         visible
           ? "opacity-100 translate-y-0"
@@ -24,7 +49,7 @@ function ScrollToTop() {
       }`}
     >
       <ChevronUp size={22} />
-    </a>
+    </button>
   );
 }
 

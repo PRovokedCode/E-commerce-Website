@@ -4,8 +4,7 @@ import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import { useWishlist } from "../../context/WishlistContext";
 import { useState, useEffect } from "react";
-
-const BASE = "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs";
+import { logo } from "../../data/assets";
 
 function Header() {
   const navigate = useNavigate();
@@ -43,7 +42,7 @@ function Header() {
         {/* Logo */}
         <Link to="/" className="shrink-0">
           <img
-            src={`${BASE}/theme/logo.svg`}
+            src={logo}
             alt="Evara Logo"
             className={`w-auto transition-all duration-300 ${
               scrolled ? "h-7" : "h-10"

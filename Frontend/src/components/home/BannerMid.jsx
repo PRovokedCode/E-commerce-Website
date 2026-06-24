@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-
-const BASE = "https://wp.alithemes.com/html/evara/evara-frontend/assets/imgs";
+import { bannerMid } from "../../data/homepageData";
 
 function BannerMid() {
   return (
@@ -19,7 +18,7 @@ function BannerMid() {
           </div>
           <div className="absolute right-12 top-1/2 -translate-y-1/2 w-48 flex items-center justify-center">
             <img
-              src={`${BASE}/banner/banner-9.png`}
+              src={bannerMid.left}
               alt="Sale"
               className="max-h-36 object-contain group-hover:scale-105 transition-transform duration-500"
               onError={(e) => (e.target.style.display = "none")}
@@ -57,7 +56,7 @@ function BannerMid() {
         >
           <div className="absolute right-0 top-0 bottom-0 w-56 flex items-center justify-center">
             <img
-              src={`${BASE}/banner/banner-10.png`}
+              src={bannerMid.right}
               alt="New"
               className="max-h-40 object-contain group-hover:scale-105 transition-transform duration-500"
               onError={(e) => (e.target.style.display = "none")}

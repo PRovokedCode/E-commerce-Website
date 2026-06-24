@@ -10,6 +10,10 @@ export function CartProvider({ children }) {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const [lastAddedTime, setLastAddedTime] = useState(0);
 
   useEffect(() => {
@@ -20,7 +24,7 @@ export function CartProvider({ children }) {
   const addToCart = (product, quantity = 1) => {
     const now = Date.now();
 
-    if (now - lastAddedTime < 300) {
+    if (now - lastAddedTime < 250) {
       toast.error("Please slow down a bit 😅", {
         id: "cart-limit",
       });
@@ -79,14 +83,16 @@ export function CartProvider({ children }) {
   // Decrease Quantity
   const decreaseQuantity = (id) => {
     setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity: item.quantity > 1 ? item.quantity - 1 : 1,
-            }
-          : item,
-      ),
+      prev
+        .map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
     );
   };
 
@@ -108,6 +114,7 @@ export function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         cartCount,
+        clearCart,
         cartTotal,
       }}
     >

@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { products } from "../../data/products";
 import ProductCard from "../shared/ProductCard";
@@ -21,16 +22,15 @@ function AllProducts() {
 
   const selectedCategory = searchParams.get("category") || "All";
 
+  const categoryCount = (category) => {
+    if (category === "All") return products.length;
+
+    return products.filter((p) => p.category === category).length;
+  };
+
+  const selectedBadge = searchParams.get("type") || "All";
+
   const searchQuery = searchParams.get("search") || "";
-
-  useEffect(() => {
-      const params =
-    new URLSearchParams(searchParams);
-
-  params.set("page", 1);
-
-  navigate(`/shop?${params.toString()}`);
-  }, [selectedCategory, searchQuery, sortBy]);
 
   useEffect(() => {
     productsRef.current?.scrollIntoView({
@@ -45,6 +45,11 @@ function AllProducts() {
     /* Category Filter */
     if (selectedCategory !== "All") {
       filtered = filtered.filter((p) => p.category === selectedCategory);
+    }
+
+    /* Product Type Filter */
+    if (selectedBadge !== "All") {
+      filtered = filtered.filter((p) => p.badge === selectedBadge);
     }
 
     /* Search Filter */
@@ -68,7 +73,7 @@ function AllProducts() {
     }
 
     return filtered;
-  }, [selectedCategory, searchQuery, sortBy]);
+  }, [selectedCategory, selectedBadge, searchQuery, sortBy]);
 
   const productsPerPage = 8;
 
@@ -80,6 +85,10 @@ function AllProducts() {
     startIndex,
     startIndex + productsPerPage,
   );
+
+  const badgeCount = (badge) => {
+    return products.filter((p) => p.badge === badge).length;
+  };
 
   return (
     <section ref={productsRef} className="max-w-7xl mx-auto px-4 py-10">
@@ -127,7 +136,17 @@ function AllProducts() {
                 : "bg-white border border-gray-200 text-gray-600"
             }`}
           >
-            {category}
+            <div className="flex items-center justify-between w-full">
+              <span>{category}</span>
+
+              <span
+                className={`text-xs px-2 py-0.5 rounded-full ${
+                  selectedCategory === category ? "bg-white/20" : "bg-gray-100"
+                }`}
+              >
+                {categoryCount(category)}
+              </span>
+            </div>
           </button>
         ))}
       </div>
@@ -164,7 +183,19 @@ function AllProducts() {
                         : "hover:bg-gray-50 text-gray-600"
                     }`}
                   >
-                    {category}
+                    <div className="flex items-center justify-between w-full">
+                      <span>{category}</span>
+
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full ${
+                          selectedCategory === category
+                            ? "bg-white/20"
+                            : "bg-gray-100"
+                        }`}
+                      >
+                        {categoryCount(category)}
+                      </span>
+                    </div>
                   </button>
                 ))}
               </div>
@@ -172,17 +203,47 @@ function AllProducts() {
 
             {/* Product Type */}
             <div>
-              <h3 className="text-lg font-black text-dark mb-4">
-                Product Type
-              </h3>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-black text-dark">Product Type</h3>
+
+                {selectedBadge !== "All" && (
+                  <button
+                    onClick={() => {
+                      const params = new URLSearchParams(searchParams);
+                      params.delete("type");
+                      navigate(`/shop?${params.toString()}`);
+                    }}
+                    className="text-xs text-primary font-semibold"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
 
               <div className="flex flex-col gap-2">
                 {["Sale", "New", "Hot"].map((badge) => (
                   <button
                     key={badge}
-                    className="text-left px-4 py-3 rounded-xl text-sm font-semibold hover:bg-gray-50 text-gray-600 transition-all cursor-pointer"
+                    onClick={() => {
+                      const params = new URLSearchParams(searchParams);
+
+                      if (badge === "All") {
+                        params.delete("type");
+                      } else {
+                        params.set("type", badge);
+                      }
+
+                      params.set("page", 1);
+
+                      navigate(`/shop?${params.toString()}`);
+                    }}
+                    className={`text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+                      selectedBadge === badge
+                        ? "bg-primary text-white"
+                        : "hover:bg-gray-50 text-gray-600"
+                    }`}
                   >
-                    {badge}
+                  {badge}
                   </button>
                 ))}
               </div>
@@ -193,11 +254,30 @@ function AllProducts() {
         {/* Products */}
         <div className="lg:col-span-3">
           {/* Products Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5">
-            {paginatedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${selectedCategory}-${selectedBadge}-${currentPage}-${sortBy}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-5"
+            >
+              {paginatedProducts.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.35,
+                    delay: index * 0.05,
+                  }}
+                >
+                  <ProductCard product={product} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
           {/* Pagination */}
           {totalPages > 1 && (
