@@ -25,7 +25,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import NewsletterBanner from "../components/home/NewsletterBanner";
 import ProductCard from "../components/shared/ProductCard";
-import Breadcrumb from "../components/shared/Breadcrumb";
+import Breadcrumb from "../components/shared/BreadCrumb";
 import { useWishlist } from "../context/WishlistContext";
 
 function ProductDetails() {
