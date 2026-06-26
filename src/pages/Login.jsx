@@ -5,7 +5,7 @@ import TopBar from "../components/layout/TopBar";
 import Header from "../components/layout/Header";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import Breadcrumb from "../components/shared/Breadcrumb";
+import Breadcrumb from "../components/shared/BreadCrumb";
 import { loginPageData } from "../data/pageData";
 
 function Login() {

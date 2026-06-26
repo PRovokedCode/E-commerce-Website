@@ -5,7 +5,7 @@ import Header from "../components/layout/Header";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import NewsletterBanner from "../components/home/NewsletterBanner";
-import Breadcrumb from "../components/shared/Breadcrumb";
+import Breadcrumb from "../components/shared/BreadCrumb";
 import { contactPageData } from "../data/pageData";
 
 function Contact() {

@@ -3,7 +3,7 @@ import Header from "../components/layout/Header";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import NewsletterBanner from "../components/home/NewsletterBanner";
-import Breadcrumb from "../components/shared/Breadcrumb";
+import Breadcrumb from "../components/shared/BreadCrumb";
 
 import { cartPageData } from "../data/pageData";
 import { useCart } from "../context/CartContext";
